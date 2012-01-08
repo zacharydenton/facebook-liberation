@@ -18,18 +18,18 @@ def parse_database(database):
     return [row for row in c]
 
 def generate_vcard(contact, photos=False):
-    card = "BEGIN:VCARD\nVERSION:2.1\n"
-    card += "FN:%s\n" % contact['display_name']
+    card = "BEGIN:VCARD\nVERSION:3.0\n"
     card += "N:%s;%s;;;\n" % (contact['last_name'], contact['first_name'])
+    card += "FN:%s\n" % contact['display_name']
 
     if contact['cell']:
-        card += 'TEL;CELL;VOICE:%s\n' % contact['cell']
+        card += 'TEL;TYPE=CELL:%s\n' % contact['cell']
 
     if contact['other']:
-        card += 'TEL;HOME;VOICE:%s\n' % contact['other']
+        card += 'TEL;TYPE=HOME:%s\n' % contact['other']
 
     if contact['email']:
-        card += "EMAIL;PREF;INTERNET:%s\n" % contact['email']
+        card += "EMAIL;TYPE=PREF:%s\n" % contact['email']
 
     birthday = "-".join([str(f) for f in [contact['birthday_year'],
                                           contact['birthday_month'],
@@ -42,7 +42,7 @@ def generate_vcard(contact, photos=False):
     if photos and contact['user_image_url']:
         try:
             photo = urllib2.urlopen(contact['user_image_url']).read()
-            card += "PHOTO;ENCODING=BASE64:;TYPE=JPEG:%s\n" %\
+            card += "PHOTO;ENCODING=B;TYPE=JPEG:%s\n" %\
                     base64.b64encode(photo)
         except:
             pass
