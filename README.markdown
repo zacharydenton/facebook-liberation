@@ -14,5 +14,12 @@ profile pictures in addition to email addresses and names.
 
 ## Usage ##
 
-	./fbcontacts.py [fb.db] [contacts.vcf]
+	usage: fbcontacts.py [-h] [database] [vcard]
+	
+	positional arguments:
+	  database    path to facebook database
+	  vcard       file to write contacts to
+	
+	optional arguments:
+	  -h, --help  show this help message and exit
 
