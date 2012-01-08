@@ -14,7 +14,7 @@ profile pictures in addition to email addresses and names.
 
 ## Usage ##
 
-	usage: fbcontacts.py [-h] [database] [vcard]
+	usage: fbcontacts.py [-h] [--photos] [database] [vcard]
 	
 	positional arguments:
 	  database    path to facebook database
@@ -22,4 +22,4 @@ profile pictures in addition to email addresses and names.
 	
 	optional arguments:
 	  -h, --help  show this help message and exit
-
+	  --photos    download profile pictures
